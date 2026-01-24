@@ -1,25 +1,53 @@
 {
-    "layer": "top",
-    "position": "left",
-    "width": 25,
-    "margin": 10,
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": [],
-    "modules-right": ["mpris", "network", "pulseaudio", "battery", "clock"],
+  "layer": "top",
+  "position": "left",
+  "width": 44,
+  "margin-left": 8,
+  "margin-top": 8,
+  "margin-bottom": 8,
+  "spacing": 4,
 
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+
+  "modules-center": [
+    "clock",
     
+],
 
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "battery",
 
-    "hyprland/workspaces": { "orientation": "vertical" },
-    "network": { "format": "" },
-   "pulseaudio": {
-        "format": "{icon}",
-        "format-icons": {
-            "default": ["󰕿", "󰖀", "󰕾"]
-        },
-        "on-click": "pavucontrol", // Sol tıkla pavucontrol açar
-        "tooltip": false
-    },
-    "battery": { "format": "{icon}" },
-    "clock": { "format": "{:%H\n%M}" }
+  ],
+
+  "hyprland/workspaces": {
+    "orientation": "vertical",
+    "format": "{name}",
+    "on-click": "activate"
+  },
+
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰖪",
+     "on-click": "nm-connection-editor"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+    "on-click": "pavucontrol"
+  },
+
+  "battery": {
+    "format": "{icon}",
+    "format-icons": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
+  },
+
+  "clock": {
+    "format": "{:%H\n%M}"
+  }
 }
