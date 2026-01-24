@@ -1,23 +1,38 @@
 @import "colors.css";
 
 * {
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 14px;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 13px;
+    border: 0;
+    box-shadow: none;
+    background-image: none;
 }
 
 window#waybar {
     background-color: @background;
-    border: none;
+    border-radius: 6px;   /* az yuvarlak */
 }
 
+/* WORKSPACES */
 #workspaces button {
     color: @foreground;
+    padding: 5px 0;
+    background-color: transparent;
 }
 
 #workspaces button.active {
     color: @primary;
 }
 
-#network, #pulseaudio, #battery, #clock {
-    color: @primary;
+/* MODULES */
+#network,
+#pulseaudio,
+#battery,
+#clock {
+    color: @foreground;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    font-feature-settings: "tnum"; /* monospace rakam hissi */
+    padding: 6px 0;
 }
