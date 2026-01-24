@@ -1,0 +1,25 @@
+{
+    "layer": "top",
+    "position": "left",
+    "width": 25,
+    "margin": 10,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": [],
+    "modules-right": ["mpris", "network", "pulseaudio", "battery", "clock"],
+
+    
+
+
+    "hyprland/workspaces": { "orientation": "vertical" },
+    "network": { "format": "" },
+   "pulseaudio": {
+        "format": "{icon}",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol", // Sol tıkla pavucontrol açar
+        "tooltip": false
+    },
+    "battery": { "format": "{icon}" },
+    "clock": { "format": "{:%H\n%M}" }
+}
