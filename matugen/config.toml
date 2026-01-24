@@ -2,7 +2,7 @@
 # ...
 
 [templates.hyprland]
-input_path = '~/.config/matugen/templates/colors.conf'
+input_path = '~/.config/matugen/templates/hypr'
 output_path = '~/.config/hypr/colors.conf'
 post_hook = 'hyprctl reload'
 
@@ -20,5 +20,6 @@ output_path = '~/.config/rofi/color.rasi'
 input_path = '~/.config/matugen/templates/waybar'
 output_path = '~/.config/waybar/colors.css'
 post_hook = 'pkill -SIGUSR2 waybar'
+
 
 
