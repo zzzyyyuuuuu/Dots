@@ -12,7 +12,7 @@ sudo zypper install -y opi rsync swww jetbrainsmono-fonts
 
 if [[ "$ID" == "opensuse-tumbleweed" ]]; then
     echo "🚀 Tumbleweed: En güncel paketler kuruluyor..."
-    sudo zypper install -y hyprland waybar rofi-wayland
+    sudo zypper install -y hyprland waybar rofi-wayland fastfetch
     opi matugen # Tumbleweed'de direkt bulur
     
 elif [[ "$ID" == "opensuse-leap" ]]; then
@@ -21,7 +21,7 @@ elif [[ "$ID" == "opensuse-leap" ]]; then
     opi hyprland
     opi waybar
     opi matugen
-    sudo zypper install -y rofi
+    sudo zypper install -y rofi fastfetch 
 fi
 
 # 2. Yazı tipi önbelleğini tazele
