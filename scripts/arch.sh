@@ -39,6 +39,7 @@ $HELPER -S --noconfirm --needed \
     rsync \
     ttf-jetbrains-mono-nerd \
     xdg-desktop-portal-hyprland \
-    xdg-desktop-portal-gtk
+    xdg-desktop-portal-gtk \ 
+    fastfetch
 
 echo "✨ Arch tarafı çiçek gibi oldu, her şey hazır!"
