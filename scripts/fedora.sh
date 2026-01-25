@@ -18,6 +18,7 @@ sudo dnf install -y \
     rofi-wayland \
     swww \
     rsync \
-    jetbrains-mono-fonts-all
+    jetbrains-mono-fonts-all \ 
+    fastfetch
 
 echo "✅ Fedora tarafı artık yıkılıyor! Solopasha ve Satori hazır."
