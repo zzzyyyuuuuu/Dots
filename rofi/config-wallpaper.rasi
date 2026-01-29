@@ -1,143 +1,102 @@
 configuration {
     modi:                        "drun";
-    font:                        "JetBrainsMono Nerd Font 10";
     show-icons:                  true;
     drun-display-format:         "{name}";
-    hover-select:                true;
-    me-select-entry:             "MouseSecondary";
-    me-accept-entry:             "MousePrimary";
-    window-format:               "{w} · {c} · {t}";
-    dpi:                         1;
+    font:                        "JetBrainsMono NF Bold 11";
 }
+
+//----- Global Properties -----//
 
 * {
-    background-alt:              rgba(51, 51, 51, 0.5);
-    selected:                    rgba(255,255,255,0.16);
-    active:                      rgba(255,255,255,0.10);
-    urgent:                      rgba(255,80,80,0.28);
-    text-color:                  #fff;
-    text-selected:               rgba(255,255,255,0.98);
-    border-color:                rgba(0,0,0,0.35);
+    main-bg:                     @surface-container;
+    main-fg:                     @on-surface;
+    select-bg:                   @primary;
+    select-fg:                   @on-primary;
 }
 
-/* ───────── Window ───────── */
+//----- Main Window -----//
 
 window {
     enabled:                     true;
     fullscreen:                  false;
+    width:                       100%;
     transparency:                "real";
     cursor:                      "default";
-
-    location:                    center;
-    anchor:                      center;
-    width:                       75%;
-
     spacing:                     0px;
-    border:                      1px;
-    border-radius:               20px;
-
-    /* IMPORTANT FOR BLUR */
-    background-color:            rgba(46, 45, 45, 0.5);
-    border-color:                rgba(255, 255, 255, 0.45);
+    padding:                     0px;
+    border:                      0px;
+    border-radius:               0px;
+    border-color:                transparent;
+    background-color:            transparent;
 }
 
-/* ───────── Layout ───────── */
+//----- Main Box -----//
 
 mainbox {
     enabled:                     true;
-    children:                    [ "inputbar", "listview" ];
-    background-color:            transparent;
+    children:                    [ "listview" ];
+    background-color:            @main-bg;
 }
 
-/* ───────── Input ───────── */
-
-inputbar {
-    enabled:                     true;
-    padding:                     5px;
-    margin:                      10px;
-
-    text-color:                  rgba(255,255,255,0.55);
-    background-color:            transparent;
-
-    children:                    [ "entry" ];
-}
-
-entry {
-    enabled:                     true;
-    text-color:                  inherit;
-    background-color:            transparent;
-}
-
-/* ───────── Grid ───────── */
+//----- Listview -----//
 
 listview {
     enabled:                     true;
-    columns:                     5;
+    columns:                     6;
     lines:                       1;
-
-    padding:                     26px 36px;
-    spacing:                     20px;
-
+    spacing:                     50px;
+    padding:                     20px 30px;
     cycle:                       true;
-    dynamic:                     true;
+    dynamic:                     false;
     scrollbar:                   false;
-
     layout:                      vertical;
+    reverse:                     true;
     fixed-height:                true;
     fixed-columns:               true;
-
+    cursor:                      "default";
     background-color:            transparent;
-    border:                      0px;
+    text-color:                  @main-fg;
 }
 
-/* ───────── Tiles ───────── */
+//----- Elements -----//
 
 element {
     enabled:                     true;
-    orientation:                 vertical;
-    expand:                      false;
-
-    padding:                     5px 10px;
-    border-radius:               10px;
+    orientation:                 horizontal;
+    spacing:                     0px;
+    padding:                     0px;
+    border-radius:               20px;
     cursor:                      pointer;
-    text-color:                  #fff;
-    background-color:            rgba(255,255,255,0.04);
+    background-color:            transparent;
+    text-color:                  @main-fg;
 }
 
-element normal.normal {
-    background-color:            rgba(255,255,255,0.06);
-        text-color:                  #fff;
-}
-
-element normal.active {
-    background-color:            rgba(255,255,255,0.10);
-        text-color:                  #fff;
-}
-
-element normal.urgent {
-    background-color:            rgba(255,60,60,0.25);
-        text-color:                  #fff;
+@media(max-aspect-ratio: 1.8) {
+    element {
+        orientation:             vertical;
+    }
 }
 
 element selected.normal {
-    background-color:            rgba(255,255,255,0.18);
-    text-color:                  #fff;
+    background-color:            @select-bg;
+    text-color:                  @select-fg;
 }
-
-element alternate.normal {
-    background-color:            rgba(255,255,255,0.05);
-        text-color:                  #fff;
-}
-
-/* ───────── Icon & Text ───────── */
 
 element-icon {
-    size:                        50%;
-    padding:                     0px;
+    size:                        33%;
+    cursor:                      inherit;
+    border-radius:               0px;
     background-color:            transparent;
+    text-color:                  inherit;
 }
 
 element-text {
-    padding-left:                10px;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    padding:                     20px;
+    cursor:                      inherit;
     background-color:            transparent;
+    text-color:                  inherit;
 }
+
+@import "color.rasi"
