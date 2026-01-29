@@ -7,116 +7,192 @@
 @import "color.rasi"
 
 configuration {
-    modi:                       "drun,run";
-    font:                       "Iosevka 14";
-    show-icons:                 false;
-    icon-theme:                 "kora";
-    display-drun:               "Search :";
-    display-run:                "x";
-    display-filebrowser:        "FILES";
-    display-window:             "WINDOW";
-    drun-display-format:        "{name}";
-    hover-select:               false;
-    scroll-method:              1;
-    me-select-entry:            "";
-    me-accept-entry:            "MousePrimary";
-    window-format:              "{w} · {c} · {t}";
+    modi:                    "drun,window";
+    show-icons:              true;
+    display-drun:            " apps";
+    display-run:             " term";
+    display-filebrowser:     " files";
+    display-window:          " window";
+    drun-display-format:     "{name}";
+    hover-select:            true;
+    font:                    "Google Sans Flex Regular 11";
+    me-select-entry:         "MouseSecondary";
+    me-accept-entry:         "MousePrimary";
+    window-format:           "{w} · {c} · {t}";
+    icon-theme: "Colloid";
 }
 
+/* ---- Window ---- */
 window {
-    width:                        350px;
-    x-offset:                     0px;
-    y-offset:                     0px;
-    spacing:                      0px;
-    padding:                      10px;
-    margin:                       0px; 
-    border:                       0px;
-    border-color:                 transparent;
-    cursor:                       "default";
-    transparency:                 "real";
-    location:                     center;
-    anchor:                       center;
-    fullscreen:                   false;
-    enabled:                      true;
-    border-radius:                12px;
-    background-color:             @surface;       /* Matugen surface */
+    enabled:                 true;
+    fullscreen:              false;
+    transparency:            "real";
+    cursor:                  "default";
+    spacing:                 0px;
+    border:                  2px;
+    border-radius:           20px;
+    location:                center;
+    anchor:                  center;
+    width:                   40%;
+    background-color:        @on-primary-fixed;
+    border-color:            @outline;
 }
 
-listview {
-    columns: 1;
-    lines: 7;
-    fixed-height: true;
-    fixed-columns: true;
-    cycle: false;
-    scrollbar: false;
-    border: 0px solid;
-    background-color:             @surface-container-low; /* Matugen surface container low */
-}
-
-inputbar {
-    children: ["entry"];
-    spacing: 2px;
-    border-radius: 8px;
-    padding: 6px 8px;
-    background: @surface-container-low;  /* Matugen uyumlu */
-    height: 34px;                        /* inputbar yüksekliği sabitlendi */
-}
-
-entry {
-    padding: 6px 8px;                     
-    color: @on-surface;                   /* yazı rengi */
-    background: @surface-container-low;   
-    border-radius: 6px;
-    font: "Iosevka 14";
-    placeholder-text: "search";           /* placeholder artık entry içinde */
-    placeholder-color: @secondary;        /* Matugen secondary, hafif soluk */
-    placeholder-opacity: 0.7;             /* hafif soluk görünüm */
-    height: 22px;                         /* yazı ortalanacak */
-}
-
-
-
-
-
-
+/* ---- Main Box ---- */
 mainbox {
-    spacing: 4px;
-    margin: 0;
-    padding: 0;
-    children: ["inputbar", "listview", "message"];
+    enabled:                 true;
+    orientation:             vertical;
+    children:                [ "inputbar", "listbox" ];
+    background-color:        transparent;
 }
 
-listview{
-    border-radius: 8px;
+/* ---- Inputbar ---- */
+inputbar {
+    enabled:                 true;
+    padding:                 8px;
+    margin:                  10px;
+    background-color:        transparent;
+    border-radius:           0px;
+    orientation:             horizontal;
+    children:                [ "entry" ];
 }
 
+/* ---- Entry ---- */
+entry {
+    enabled:                 true;
+    expand:                  true;
+    width:                   100%;
+    padding:                 8px;
+    border-radius:           0px;
+    background-color:        transparent;
+    text-color:              @on-surface;
+    cursor:                  text;
+    placeholder:             "Search";
+    placeholder-color:       @on-surface-variant;
+}
+
+/* ---- Listbox ---- */
+listbox {
+    spacing:                 0px;
+    padding:                 0px 10px 10px 10px;
+    background-color:        transparent;
+    orientation:             vertical;
+    children:                [ "message", "listview" ];
+}
+
+/* ---- Listview ---- */
+listview {
+    enabled:                 true;
+    columns:                 1;
+    lines:                   7;
+    cycle:                   true;
+    dynamic:                 true;
+    scrollbar:               false;
+    layout:                  vertical;
+    fixed-height:            true;
+    fixed-columns:           true;
+    spacing:                 0px;
+    padding:                 0px;
+    background-color:        transparent;
+    border:                  0px;
+}
+
+/* ---- Scrollbar ---- */
+scrollbar {
+    border:                  0px;
+    background-color:        transparent;
+    handle-color:            @primary;
+    handle-width:            2px;
+}
+
+/* ---- Elements ---- */
 element {
-    spacing: 0;
-    margin: 0;
-    padding: 8px;
-    border: 0px solid;
-    border-radius: 0;
-    background-color: @surface-container; /* Matugen surface container */
-    text-color: @on-surface; /* Matugen on-surface */
+    enabled:                 true;
+    spacing:                 8px;
+    padding:                 8px;
+    border-radius:           0px;
+    background-color:        transparent;
+    cursor:                  pointer;
+    border-radius:			 10px;
 }
 
+/* Normal */
 element normal.normal {
-    background-color: @surface-container; /* Matugen surface container */
-    text-color: @on-surface; /* Matugen on-surface */
+    background-color:        transparent;
+    text-color:              @on-surface;
 }
 
-element alternate.normal {
-    background-color: @surface-container-low; /* Matugen surface container low */
-    text-color: @on-surface-variant; /* Matugen on-surface variant */
+/* Hover */
+element normal.active {
+    background-color:        @primary;
+    text-color:              @on-primary;
+}
+
+/* Urgent */
+element normal.urgent {
+    background-color:        @error;
+    text-color:              @on-surface;
+}
+
+/* Selected */
+element selected.normal {
+    background-color:        @primary-container;
+    text-color:              @on-primary-container;
 }
 
 element selected.active {
-    text-color: @primary; /* Matugen primary */
-    background-color: @surface-container-high; /* Matugen surface container high */
+    background-color:        @primary;
+    text-color:              @on-primary;
 }
 
-element selected.normal {
-    text-color: @primary; /* Matugen primary */
-    background-color: @surface-container-high; /* Matugen surface container high */
+element selected.urgent {
+    background-color:        @error;
+    text-color:              @on-error;
+}
+
+/* Alternate rows */
+element alternate.normal,
+element alternate.active,
+element alternate.urgent {
+    background-color:        transparent;
+    text-color:              @on-surface;
+}
+
+/* ---- Icons ---- */
+element-icon {
+    background-color:        transparent;
+    text-color:              inherit;
+    size:                    28px;
+    cursor:                  inherit;
+}
+
+/* ---- Text ---- */
+element-text {
+    background-color:        transparent;
+    text-color:              inherit;
+    cursor:                  inherit;
+    vertical-align:          0.5;
+    horizontal-align:        0.0;
+}
+
+/* ---- Message ---- */
+message {
+    background-color:        transparent;
+    border:                  0px;
+}
+
+textbox {
+    margin:                  10px;
+    padding:                 8px;
+    background-color:        @secondary-container;
+    text-color:              @on-secondary-container;
+    vertical-align:          0.5;
+    horizontal-align:        0.5;
+}
+
+error-message {
+    padding:                 8px;
+    background-color:        @error-container;
+    text-color:              @on-error-container;
 }
 
