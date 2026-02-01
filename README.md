@@ -1,1 +1,1 @@
-# Pure-Hyprland
+dots
