@@ -2,7 +2,7 @@
 
 WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 SYMLINK_PATH="$HOME/.config/hypr/current_wallpaper"
-ROFI_CONFIG="$HOME/.config/rofi/config-wallpaper.rasi"
+ROFI_CONFIG="$HOME/.config/rofi/config.rasi"
 
 # Safety
 cd "$WALLPAPER_DIR" || exit 1
