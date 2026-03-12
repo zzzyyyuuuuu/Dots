@@ -4,7 +4,7 @@
  * Copyright: zzzyyyuuuuu
  */
 
-@import "colors.css";
+@import "../colors.css";
 
 * {
     font-family: JetBrainsMono Nerd Font;
