@@ -1,0 +1,5 @@
+add_newline = true
+
+import = [
+    "~/.config/starship/pure.toml"
+]  

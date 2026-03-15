@@ -1,0 +1,48 @@
+format = """
+[░▒▓](magenta)\
+$os\
+[](bg:blue fg:magenta)\
+$directory\
+[](fg:blue bg:magenta)\
+$git_branch\
+$git_status\
+[](fg:magenta bg:none)\
+$fill\
+[](fg:blue)\
+$time\
+[▓▒░](blue)
+$character"""
+
+[fill]
+symbol = " "
+
+[os]
+disabled = false
+format = "[ $symbol ](bg:magenta fg:white)"
+
+[os.symbols]
+Fedora = "󰣛"
+
+[directory]
+style = "bg:blue fg:white"
+format = "[ $path ]($style)"
+truncation_length = 3
+
+[git_branch]
+symbol = "󰊢"
+style = "bg:magenta fg:white"
+format = "[[ $symbol $branch ]($style)]($style)"
+
+[git_status]
+style = "bg:magenta fg:white"
+format = "[[($all_status$ahead_behind )]($style)]($style)"
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:blue fg:white"
+format = "[ 󱑒 $time ]($style)"
+
+[character]
+success_symbol = "[ ❯](bold magenta)"
+error_symbol = "[ ❯](bold red)"
