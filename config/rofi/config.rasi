@@ -59,7 +59,7 @@ inputbar {
 }
 
 entry {
-    placeholder: "  Search the trizen";
+    placeholder: "  Search the void ";
     padding: 2px;
     text-color:                   @on-surface;
     cursor-width:                    0;
