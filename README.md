@@ -11,8 +11,10 @@
 > **Turn on the sound. Let the "Venus" energy take off.**
 
 <p align="center">
-
+  <video src="https://github.com/user-attachments/assets/98bab195-d66c-4053-8501-62b67d494093" width="100%" controls autoplay loop muted>
+  </video>
 </p>
+
 
 *🎵 Background: Lady Gaga - Venus*
 
