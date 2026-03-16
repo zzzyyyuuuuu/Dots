@@ -7,7 +7,7 @@ NC='\033[0m'
 
 echo -e "${CYAN}🌌 Pure-Flow: Starting Arch Linux Installation...${NC}"
 
-sudo pacman -S --needed --noconfirm base-devel git hyprland hyprpaper swaync rofi-wayland waybar kitty dolphin rust
+sudo pacman -S --needed --noconfirm base-devel git hyprland hyprpaper swaync rofi-wayland waybar kitty dolphin rust noto-fonts-cjk ttf-jetbrains-mono-nerd
 
 if ! command -v yay &> /dev/null; then
     git clone https://aur.archlinux.org/yay.git /tmp/yay
