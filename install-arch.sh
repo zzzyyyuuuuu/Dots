@@ -101,7 +101,7 @@ chmod +x "$HOME/.config/hypr/scripts/"* 2>/dev/null || true
 
 # WALLPAPER SETUP
 if [ -f "./wallpapers.sh" ]; then
-    source ./wallpapers.sh
+    source ./walls.sh
 fi
 
 echo -e "\n${CYAN}Finished.${NC} ${GRAY}Pure-Flow is ready :)${NC}"
