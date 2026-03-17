@@ -29,10 +29,10 @@ window#waybar {
     border: 1px solid alpha(@outline, 0.15);
 }
 
-#right1 {
+#right1, #custom-notification, #custom-power {
     background-color: alpha(@surface, 0.7);
     padding: 2px 12px;
-    margin: 6px 12px;
+    margin: 6px 6px;
     border-radius: 12px;
     border: 1px solid alpha(@outline, 0.15);
 }
@@ -56,9 +56,14 @@ window#waybar {
     margin: 4px 2px;
 }
 
-#network, #bluetooth, #battery {
+#network, #bluetooth, #battery, #custom-notification {
     color: @primary;
     padding: 0 8px;
+}
+
+#custom-power {
+    color: #ff5555;
+    padding: 0 12px;
 }
 
 #cpu, #memory, #disk {
