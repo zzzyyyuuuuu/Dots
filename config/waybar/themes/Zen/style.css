@@ -10,8 +10,6 @@
 
 window#waybar {
     background-color: rgba(15, 15, 15, 0.6);
-    border-bottom: none;
-    margin: 0px;
     border-radius: 0px;
 }
 
@@ -21,6 +19,7 @@ window#waybar {
 #pulseaudio,
 #network,
 #battery,
+#custom-notification,
 #custom-power {
     background-color: rgba(255, 255, 255, 0.08); 
     color: @primary;
@@ -47,7 +46,13 @@ window#waybar {
     padding-right: 25px;
 }
 
+#custom-notification {
+    color: #f9e2af;
+}
+
 #custom-power {
     color: #ff5555;
     background-color: rgba(255, 85, 85, 0.1);
+    padding-right: 18px;
+    padding-left: 18px;
 }
