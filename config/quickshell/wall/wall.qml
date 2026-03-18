@@ -1,121 +1,138 @@
-import Quickshell
-import Quickshell.Io
 import QtQuick
 import Qt.labs.folderlistmodel
+import Quickshell
+import Quickshell.Io
 import Quickshell.Wayland
 
 PanelWindow {
     id: main
-    implicitHeight: 500
-    implicitWidth: Screen.width
+    width: Screen.width
+    height: Screen.height
     color: "transparent"
-
-    aboveWindows: true
-    exclusionMode: "Ignore"
-    exclusiveZone: 1
 
     WlrLayershell.layer: WlrLayer.Overlay
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
 
-    FileView {
-        path: Quickshell.shellDir + "/config.json"
-        watchChanges: true
-        onFileChanged: reload()
-
-        JsonAdapter {
-            id: configs
-            property string wallpaper_path
-            property string cache_path
-            property int number_of_pictures: 5
-        }
-    }
-
-    FileView {
-        path: Quickshell.shellDir + "/../colors.json"
-        watchChanges: true
-        onFileChanged: reload()
-
-        JsonAdapter {
-            id: matugen
-            property var md3: ({})
-        }
-    }
-
-    function resolvePath(path) {
-        if (!path) return "";
-        let p = path;
-        if (p.startsWith("~")) p = p.replace("~", Quickshell.env("HOME"));
-        if (p.includes("$HOME")) p = p.replace("$HOME", Quickshell.env("HOME"));
-        return p;
-    }
-
-    FolderListModel {
-        id: folderModel
-        folder: "file://" + resolvePath(configs.wallpaper_path)
-        showDirs: false
-        nameFilters: ["*.png","*.jpg","*.jpeg","*.webp"]
-        sortField: FolderListModel.Name
-    }
-
-    ListView {
-        id: list
+    readonly property color bgMain: "#000000"      
+    readonly property color accent: "#89b4fa"      
+    readonly property color activeTagBg: "#89b4fa" 
+    readonly property color activeTagText: "#11111b"
+    readonly property color borderCol: "#1e1e2e"   
+    readonly property color textMain: "#cdd6f4"    
+    readonly property string activeFont: "JetBrains Mono" 
+    readonly property string wallPath: Quickshell.env("HOME") + "/Pictures/Alice"
+    
+    Item {
+        id: root
         anchors.fill: parent
-        anchors.margins: 40
         focus: true
-        model: folderModel
-        orientation: ListView.Horizontal
-        spacing: 30
 
-        highlightMoveDuration: 400
-        highlightRangeMode: ListView.ApplyRange
-        preferredHighlightBegin: width / 2 - tileWidth / 2
-        preferredHighlightEnd: width / 2 - tileWidth / 2
+        Rectangle { anchors.fill: parent; color: "black"; opacity: 0.5 }
 
-        property int selectedIndex: 0
-        property real tileWidth: (width / (configs.number_of_pictures || 5)) - spacing
+        Rectangle {
+            id: mainPanel
+            width: 1120; height: 700
+            anchors.centerIn: parent
+            color: bgMain
+            radius: 12
+            border.color: borderCol
+            border.width: 1
+            clip: true
 
-        delegate: Item {
-            id: delegateItem
-            width: list.tileWidth
-            height: 420
-            anchors.verticalCenter: parent.verticalCenter
+            Item {
+                id: header
+                width: parent.width; height: 85
+                Row {
+                    anchors.left: parent.left; anchors.leftMargin: 30
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: 12
+                    Text { text: "󰸉"; font.pixelSize: 26; color: accent; font.family: "Symbols Nerd Font" }
+                    Text { text: "Wallpapers"; font.pixelSize: 22; font.bold: true; color: textMain }
+                }
+                
+                Rectangle {
+                    anchors.right: parent.right; anchors.rightMargin: 30
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: 95; height: 30; radius: 15; color: "#11111b"
+                    Text {
+                        anchors.centerIn: parent
+                        text: folderModel.count + " images"
+                        font.pixelSize: 14; color: "#a6adc8"
+                    }
+                }
+            }
 
-            Rectangle {
-                anchors.fill: parent
-                color: matugen.md3.surface_container || "#1a1a1a"
+            GridView {
+                id: grid
+                width: parent.width - 40; height: parent.height - 110
+                anchors.top: header.bottom; anchors.topMargin: 5
+                anchors.horizontalCenter: parent.horizontalCenter
+                model: folderModel
+                cellWidth: width / 4; cellHeight: 185
                 clip: true
-                transform: Shear { xFactor: -0.1 }
+                cacheBuffer: 1000
+                
+                FolderListModel {
+                    id: folderModel
+                    folder: "file://" + wallPath
+                    showDirs: false
+                    nameFilters: ["*.png","*.jpg","*.jpeg","*.webp"]
+                }
 
-                scale: index === list.selectedIndex ? 1.05 : 1.0
-                Behavior on scale { NumberAnimation { duration: 250; easing.type: Easing.OutCubic } }
+                delegate: Item {
+                    width: grid.cellWidth; height: grid.cellHeight
+                    
+                    Rectangle {
+                        width: parent.width - 12; height: parent.height - 12
+                        anchors.centerIn: parent
+                        radius: 8; color: "#0a0a0a"; clip: true 
+                        
+                        border.width: grid.currentIndex === index ? 2 : 0
+                        border.color: accent
 
-                Image {
-                    anchors.fill: parent
-                    fillMode: Image.PreserveAspectCrop
-                    asynchronous: true
-                    source: "file://" + resolvePath(configs.wallpaper_path) + "/" + fileName
-                    opacity: status === Image.Ready ? 1.0 : 0.0
-                    Behavior on opacity { NumberAnimation { duration: 500 } }
+                        Image {
+                            anchors.fill: parent
+                            source: "file://" + filePath
+                            fillMode: Image.PreserveAspectCrop
+                            asynchronous: true
+                            sourceSize: Qt.size(400, 250)
+                            visible: status === Image.Ready
+                        }
+
+                        Rectangle {
+                            visible: grid.currentIndex === index
+                            anchors.top: parent.top; anchors.right: parent.right
+                            anchors.margins: 12
+                            width: 68; height: 24; radius: 4 
+                            color: activeTagBg
+                            
+                            Text {
+                                anchors.centerIn: parent
+                                text: "ACTIVE"
+                                color: activeTagText
+                                font.bold: true
+                                font.pixelSize: 10
+                                font.family: activeFont
+                                font.letterSpacing: 1
+                            }
+                        }
+                    }
                 }
             }
         }
 
-        Keys.onPressed: function(event) {
-            if (event.key === Qt.Key_Right || event.key === Qt.Key_J) {
-                selectedIndex = Math.min(selectedIndex + 1, count - 1)
-                list.positionViewAtIndex(selectedIndex, ListView.Center)
-            } 
-            else if (event.key === Qt.Key_Left || event.key === Qt.Key_K) {
-                selectedIndex = Math.max(selectedIndex - 1, 0)
-                list.positionViewAtIndex(selectedIndex, ListView.Center)
-            } 
-            else if (event.key === Qt.Key_Space || event.key === Qt.Key_Return) {
-                const path = folderModel.get(selectedIndex, "filePath")
+        Keys.onPressed: (event) => {
+            if (event.key === Qt.Key_Right || event.key === Qt.Key_L) grid.moveCurrentIndexRight()
+            else if (event.key === Qt.Key_Left || event.key === Qt.Key_H) grid.moveCurrentIndexLeft()
+            else if (event.key === Qt.Key_Down || event.key === Qt.Key_J) grid.moveCurrentIndexDown()
+            else if (event.key === Qt.Key_Up || event.key === Qt.Key_K) grid.moveCurrentIndexUp()
+            else if (event.key === Qt.Key_Return || event.key === Qt.Key_Space) {
+                let path = folderModel.get(grid.currentIndex, "filePath")
                 if (path) {
-                    Quickshell.execDetached(["bash", Quickshell.shellDir + "/wall", path])
+                    Quickshell.execDetached(["bash", "-c", `hyprctl hyprpaper preload "${path}" && hyprctl hyprpaper wallpaper "eDP-1,${path}"`]);
                     Qt.quit()
                 }
-            } 
+            }
             else if (event.key === Qt.Key_Escape) Qt.quit()
         }
     }
