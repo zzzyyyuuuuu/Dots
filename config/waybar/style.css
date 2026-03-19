@@ -1,0 +1,58 @@
+@import url("colors.css");
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 15px;
+    font-weight: 800;
+    border: none;
+    box-shadow: none;
+}
+
+window#waybar {
+    background-color: @surface;
+    border-radius: 0px;
+}
+
+#custom-launcher,
+#workspaces,
+#clock,
+#pulseaudio,
+#network,
+#battery,
+#custom-notification,
+#custom-power {
+    background-color: rgba(255, 255, 255, 0.08); 
+    color: @primary;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 3px 15px;
+    margin: 5px;
+}
+
+#workspaces button {
+    color: @primary;
+    opacity: 0.3;
+    padding: 0 5px;
+    background: transparent;
+}
+
+#workspaces button.active {
+    opacity: 1;
+    color: @primary;
+}
+
+#clock {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#custom-notification {
+    color: #f9e2af;
+}
+
+#custom-power {
+    color: #ff5555;
+    background-color: rgba(255, 85, 85, 0.1);
+    padding-right: 18px;
+    padding-left: 18px;
+}

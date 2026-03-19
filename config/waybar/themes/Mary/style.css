@@ -1,0 +1,46 @@
+@import url("colors.css");
+
+* {
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 13px;
+    border: 0;
+    box-shadow: none;
+    background-image: none;
+}
+
+window#waybar {
+    background-color: @background;
+    border-radius: 6px;
+}
+
+/* WORKSPACES */
+#workspaces button {
+    color: @foreground;
+    padding: 5px 0;
+    background-color: transparent;
+}
+
+#workspaces button.active {
+    color: @primary;
+}
+
+/* MODULES */
+#network,
+#pulseaudio,
+#battery,
+#clock,
+#custom-notification,
+#custom-power {
+    color: @foreground;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 6px 0;
+}
+
+#custom-notification {
+    color: #f9e2af;
+}
+
+#custom-power {
+    color: #ff5555;
+}
