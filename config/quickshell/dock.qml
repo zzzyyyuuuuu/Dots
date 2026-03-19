@@ -1,5 +1,5 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
+import QtQuick 
+import QtQuick.Controls 
 import Quickshell
 import Quickshell.Wayland
 
@@ -7,7 +7,7 @@ PanelWindow {
     id: dockWindow
 
     WlrLayershell.layer: WlrLayer.Top
-    WlrLayershell.namespace: "zen-dock"
+    WlrLayershell.namespace: "Zen-Dock"
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
 
     anchors {
@@ -26,9 +26,8 @@ PanelWindow {
         width: dockContent.width + Math.round(Screen.width * 0.02)
         height: Math.round(Screen.height * 0.051)
         radius: 16
-        color: "#20ffffff"
-        border.color: "#35ffffff"
-        border.width: 1
+        color: "#000000"
+        border.width: 0
 
         Rectangle {
             anchors.top: parent.top
