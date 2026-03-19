@@ -54,8 +54,8 @@ PanelWindow {
             Component.onCompleted: {
                 var apps = [
                     "󰈹:firefox",
-                    "󰆍:foot",
-                    "󰉋:thunar",
+                    "󰆍:kitty",
+                    "󰉋:dolphin",
                     "󰓓:steam",
                     "󰙯:Discord"
                 ]
