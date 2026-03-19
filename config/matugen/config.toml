@@ -25,7 +25,11 @@ post_hook = 'pkill -SIGUSR2 waybar'
 input_path = '~/.config/matugen/templates/obs'
 output_path = '~/.var/app/com.obsproject.Studio/config/obs-studio/themes/matugen.obt'
 
-
 [templates.m3colors]
 input_path = '~/.config/matugen/templates/colors.json'
 output_path = '~/.config/quickshell/Colors/colors.json'
+
+[templates.nvim]
+input_path = '~/.config/matugen/templates/nvim'
+output_path = '~/.config/nvim/colors/colors.vim'
+post_hook = 'pkill -SIGUSR1 nvim'
