@@ -1,0 +1,31 @@
+[config]
+# ...
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
+
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty'
+output_path = '~/.config/kitty/color.conf'
+post_hook = 'pkill -SIGUSR1 kitty'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi'
+output_path = '~/.config/rofi/color.rasi'
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/waybar'
+output_path = '~/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.obs]
+input_path = '~/.config/matugen/templates/obs'
+output_path = '~/.var/app/com.obsproject.Studio/config/obs-studio/themes/matugen.obt'
+
+
+[templates.m3colors]
+input_path = '~/.config/matugen/templates/colors.json'
+output_path = '~/.config/quickshell/Colors/colors.json'
