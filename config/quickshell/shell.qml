@@ -22,6 +22,11 @@ ShellRoot {
         property bool show: false
     }
 
+    QtObject {
+        id: logoutState
+        property bool show: false
+    }
+
     Process {
         id: colorProc
         command: ["bash", "-c", "cat " + Quickshell.env("HOME") + "/.config/quickshell/Colors/colors.json"]
@@ -42,4 +47,5 @@ ShellRoot {
 
     Loader { source: Quickshell.env("HOME") + "/.config/quickshell/Dashboard/Dashboard.qml" }
     Loader { source: "Bar/bar.qml" }
+    Loader { source: "logout/logout.qml" }
 }
