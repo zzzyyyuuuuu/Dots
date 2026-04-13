@@ -36,6 +36,28 @@
     overflow-x: hidden;
   }
 
+  /* KEYFRAMES */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -47,6 +69,7 @@
     background: rgba(17,17,27,0.7);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255,255,255,0.05);
+    animation: fadeIn 0.5s ease-out; /* Nav animasyonu */
   }
 
   .nav-logo {
@@ -67,11 +90,12 @@
     color: var(--subtext);
     text-decoration: none;
     font-size: 0.85rem;
-    transition: color 0.2s;
+    transition: color 0.3s ease;
   }
 
   .nav-links a:hover { color: var(--text); }
 
+  /* HERO */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -92,6 +116,7 @@
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
+    animation: fadeIn 1s ease-out;
   }
 
   .hero-badge {
@@ -103,6 +128,7 @@
     border-radius: 999px;
     margin-bottom: 1.5rem;
     letter-spacing: 0.08em;
+    animation: fadeInUp 0.5s ease-out; /* Rozet animasyonu */
   }
 
   .hero h1 {
@@ -112,6 +138,7 @@
     letter-spacing: -0.03em;
     line-height: 1;
     margin-bottom: 1rem;
+    animation: fadeInUp 0.5s ease-out 0.1s both; /* Başlık animasyonu (gecikmeli) */
   }
 
   .hero h1 span { color: var(--blue); }
@@ -122,6 +149,7 @@
     max-width: 480px;
     line-height: 1.7;
     margin-bottom: 2.5rem;
+    animation: fadeInUp 0.5s ease-out 0.2s both; /* Açıklama animasyonu (gecikmeli) */
   }
 
   .hero-btns {
@@ -129,6 +157,7 @@
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
+    animation: fadeInUp 0.5s ease-out 0.3s both; /* Butonlar animasyonu (gecikmeli) */
   }
 
   .btn {
@@ -137,7 +166,7 @@
     padding: 0.7rem 1.6rem;
     border-radius: 8px;
     text-decoration: none;
-    transition: all 0.2s;
+    transition: all 0.3s ease; /* Hover geçişleri */
     cursor: pointer;
     border: none;
   }
@@ -150,7 +179,8 @@
 
   .btn-primary:hover {
     background: #a8c9ff;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(137,180,250,0.3);
   }
 
   .btn-ghost {
@@ -162,6 +192,7 @@
   .btn-ghost:hover {
     border-color: var(--blue);
     color: var(--blue);
+    background: rgba(137,180,250,0.05);
   }
 
   section {
@@ -186,6 +217,7 @@
     color: var(--text);
   }
 
+  /* SCREENSHOTS */
   .screenshots {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -196,23 +228,40 @@
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--overlay);
-    transition: border-color 0.2s, transform 0.2s;
+    transition: all 0.3s ease; /* Hover ve ölçekleme geçişi */
     background: var(--surface);
+    opacity: 0; /* Animasyon başlayana kadar gizli */
+    animation: scaleIn 0.5s ease-out forwards; /* Görüntü animasyonu */
   }
 
   .screenshot:first-child {
     grid-column: 1 / -1;
+    animation-delay: 0.4s;
+  }
+
+  .screenshot:nth-child(2) {
+    animation-delay: 0.5s;
+  }
+
+  .screenshot:nth-child(3) {
+    animation-delay: 0.6s;
   }
 
   .screenshot:hover {
     border-color: var(--blue);
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   }
 
   .screenshot img {
     width: 100%;
     height: auto;
     display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .screenshot:hover img {
+    transform: scale(1.01);
   }
 
   .screenshot-placeholder {
@@ -230,6 +279,7 @@
     aspect-ratio: 16/8;
   }
 
+  /* STACK */
   .stack-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -244,12 +294,18 @@
     display: flex;
     align-items: center;
     gap: 0.85rem;
-    transition: border-color 0.2s;
+    transition: all 0.3s ease; /* Hover geçişleri */
     text-decoration: none;
     color: inherit;
+    opacity: 0;
+    animation: slideIn 0.4s ease-out forwards;
   }
 
-  .stack-item:hover { border-color: var(--blue); }
+  .stack-item:hover {
+    border-color: var(--blue);
+    background: var(--surface2);
+    transform: translateX(3px);
+  }
 
   .stack-icon {
     width: 36px; height: 36px;
@@ -259,6 +315,11 @@
     justify-content: center;
     font-size: 1.1rem;
     flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .stack-item:hover .stack-icon {
+    transform: scale(1.1) rotate(5deg);
   }
 
   .stack-info { min-width: 0; }
@@ -273,6 +334,7 @@
     font-family: 'JetBrains Mono', monospace;
   }
 
+  /* KEYBINDS */
   .keybinds-list {
     display: flex;
     flex-direction: column;
@@ -287,10 +349,14 @@
     background: var(--surface);
     border: 1px solid var(--overlay);
     border-radius: 10px;
-    transition: border-color 0.2s;
+    transition: all 0.3s ease; /* Hover geçişleri */
   }
 
-  .keybind-row:hover { border-color: var(--overlay); }
+  .keybind-row:hover {
+    border-color: var(--blue);
+    background: var(--surface2);
+    transform: scale(1.01);
+  }
 
   .keybind-action {
     font-size: 0.9rem;
@@ -318,6 +384,13 @@
     color: var(--blue);
     padding: 0.25rem 0.55rem;
     border-radius: 5px;
+    transition: all 0.2s ease;
+  }
+
+  .keybind-row:hover kbd {
+    background: var(--blue);
+    color: var(--bg);
+    border-color: var(--blue);
   }
 
   .key-plus {
@@ -332,10 +405,11 @@
     color: var(--muted);
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
+    animation: fadeIn 0.5s ease-out 0.8s both;
   }
 
-  footer a { color: var(--blue); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
+  footer a { color: var(--blue); text-decoration: none; transition: color 0.3s ease; }
+  footer a:hover { color: var(--text); text-decoration: underline; }
 
   .divider {
     height: 1px;
@@ -403,56 +477,56 @@
   <div class="section-label">// tools</div>
   <div class="section-title">stack</div>
   <div class="stack-grid">
-    <a href="https://cachyos.org/" class="stack-item">
+    <a href="https://cachyos.org/" class="stack-item" style="animation-delay: 0.1s;">
       <div class="stack-icon" style="background:rgba(137,180,250,0.1);">🐧</div>
       <div class="stack-info">
         <div class="stack-name">CachyOS</div>
         <div class="stack-cat">os</div>
       </div>
     </a>
-    <a href="https://github.com/hyprwm/Hyprland" class="stack-item">
+    <a href="https://github.com/hyprwm/Hyprland" class="stack-item" style="animation-delay: 0.15s;">
       <div class="stack-icon" style="background:rgba(203,166,247,0.1);">🪟</div>
       <div class="stack-info">
         <div class="stack-name">Hyprland</div>
         <div class="stack-cat">compositor</div>
       </div>
     </a>
-    <a href="https://github.com/kovidgoyal/kitty" class="stack-item">
+    <a href="https://github.com/kovidgoyal/kitty" class="stack-item" style="animation-delay: 0.2s;">
       <div class="stack-icon" style="background:rgba(148,226,213,0.1);">🖥️</div>
       <div class="stack-info">
         <div class="stack-name">Kitty</div>
         <div class="stack-cat">terminal</div>
       </div>
     </a>
-    <a href="https://quickshell.org/" class="stack-item">
+    <a href="https://quickshell.org/" class="stack-item" style="animation-delay: 0.25s;">
       <div class="stack-icon" style="background:rgba(249,226,175,0.1);">📊</div>
       <div class="stack-info">
         <div class="stack-name">Quickshell</div>
         <div class="stack-cat">bar · launcher</div>
       </div>
     </a>
-    <a href="https://github.com/neovim/neovim" class="stack-item">
+    <a href="https://github.com/neovim/neovim" class="stack-item" style="animation-delay: 0.3s;">
       <div class="stack-icon" style="background:rgba(166,227,161,0.1);">✏️</div>
       <div class="stack-info">
         <div class="stack-name">Neovim</div>
         <div class="stack-cat">editor</div>
       </div>
     </a>
-    <a href="https://github.com/sxyazi/yazi" class="stack-item">
+    <a href="https://github.com/sxyazi/yazi" class="stack-item" style="animation-delay: 0.35s;">
       <div class="stack-icon" style="background:rgba(243,188,168,0.1);">📁</div>
       <div class="stack-info">
         <div class="stack-name">yazi</div>
         <div class="stack-cat">file manager</div>
       </div>
     </a>
-    <a href="https://github.com/zsh-users/zsh" class="stack-item">
+    <a href="https://github.com/zsh-users/zsh" class="stack-item" style="animation-delay: 0.4s;">
       <div class="stack-icon" style="background:rgba(137,180,250,0.1);">🐚</div>
       <div class="stack-info">
         <div class="stack-name">Zsh</div>
         <div class="stack-cat">shell</div>
       </div>
     </a>
-    <a href="https://open.spotify.com/" class="stack-item">
+    <a href="http://spotify.com" class="stack-item" style="animation-delay: 0.45s;">
       <div class="stack-icon" style="background:rgba(166,227,161,0.1);">🎵</div>
       <div class="stack-info">
         <div class="stack-name">Spotify</div>
@@ -526,7 +600,7 @@
 </section>
 
 <footer>
-  made with 💧 by <a href="https://github.com/maxchennn">maxchennn</a>
+  made with 💧 by <a href="https://github.com/zzzyyyuuuuu">zzzyyyuuuuu</a>
    · 
   thanks to <a href="https://www.reddit.com/r/hyprland/">r/hyprland</a> &
   <a href="https://www.reddit.com/r/QuickShell/">r/QuickShell</a>
