@@ -1,46 +1,99 @@
-# vroomies 💧
-![](gallery/Hero.png)
+<div align="center">
 
-## Keybinds
+# 💧 vroomies
 
-### ⚡ Launch Applications
+*a hyprland dotfiles setup — fast, minimal, opinionated*
 
-| Action                 | Keybind                    | Description                          |
-|------------------------|----------------------------|--------------------------------------|
-| Terminal               | `SUPER + RETURN`           | Launch terminal ( kitty )            |
-| File Manager (yazi)    | `SUPER + SHIFT + RETURN`   | Launch yazi                          |
-| window  (floating)     | `SUPER + F `               | floating window                      |
-| Browser                | `SUPER + W`                | Launch your default browser          |
-| App Launcher / Menu    | `SUPER + D`                | Launch application menu (`$menu`)    |
-| Select Wallpaper       | `SUPER + SHIFT + A`        | Run wallpaper selector script        |
+<br/>
+
+[![Stars](https://img.shields.io/github/stars/zzzyyyuuuuu/vroomies?style=for-the-badge&color=74c7ec&labelColor=1e1e2e&logo=github)](https://github.com/zzzyyyuuuuu/vroomies/stargazers)
+[![Forks](https://img.shields.io/github/forks/zzzyyyuuuuu/vroomies?style=for-the-badge&color=cba6f7&labelColor=1e1e2e&logo=git)](https://github.com/zzzyyyuuuuu/vroomies/network/members)
+[![License](https://img.shields.io/github/license/zzzyyyuuuuu/vroomies?style=for-the-badge&color=a6e3a1&labelColor=1e1e2e)](./LICENSE)
+
+</div>
 
 ---
 
-## Details
+## ✦ showcase
 
-- OS: **[Fedora Linux](https://get.fedoraproject.org)**
-- DE: **[Hyprland](https://github.com/hyprwm/Hyprland)**
-- Terminal: **[Kitty](https://github.com/kovidgoyal/kitty)**
-- Music Player: **[spotify](https://open.spotify.com/)**
-- Shell: **[zsh](https://github.com/zsh-users/zsh)**
-- Bar: **[Quickshell](https://quickshell.org/)**
-- App Launcher: **[Quickshell](https://quickshell.org/)**
-- Editor: **[Neovim](https://github.com/neovim/neovim)**
-- File Manager: **[yazi](https://github.com/sxyazi/yazi)**
+<div align="center">
 
-# Gallery 
-![](gallery/wallpaper-switcher.png)
-![](gallery/launcher.png)
+![hero](gallery/Hero.png)
 
-## 🤝 Credits
-Special thanks to the [r/hyprland](https://www.reddit.com/r/hyprland/) community for the inspiration.
+</div>
 
-Special thanks to the [r/Quickshell](https://www.reddit.com/r/QuickShell/) community for the inspiration.
+<details>
+<summary><b>📸 more screenshots</b></summary>
+<br>
 
-## History
-<a href="https://www.star-history.com/?repos=zzzyyyuuuuu%2Fvroomies&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=zzzyyyuuuuu/vroomies&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=zzzyyyuuuuu/vroomies&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=zzzyyyuuuuu/vroomies&type=date&legend=top-left" />
- </picture>
+| wallpaper switcher | app launcher |
+|---|---|
+| ![wallpaper-switcher](gallery/wallpaper-switcher.png) | ![launcher](gallery/launcher.png) |
+
+</details>
+
+---
+
+## ✦ stack
+
+<div align="center">
+
+| category | tool |
+|---|---|
+| 🐧 **OS** | [CachyOS](https://cachyos.org/) |
+| 🪟 **Compositor** | [Hyprland](https://github.com/hyprwm/Hyprland) |
+| 🖥️ **Terminal** | [Kitty](https://github.com/kovidgoyal/kitty) |
+| 🎵 **Music** | [Spotify](https://open.spotify.com/) |
+| 🐚 **Shell** | [Zsh](https://github.com/zsh-users/zsh) |
+| 📊 **Bar + Launcher** | [Quickshell](https://quickshell.org/) |
+| ✏️ **Editor** | [Neovim](https://github.com/neovim/neovim) |
+| 📁 **Files** | [yazi](https://github.com/sxyazi/yazi) |
+
+</div>
+
+---
+
+## ✦ keybinds
+
+> `SUPER` is your modifier key
+
+<div align="center">
+
+| action | keybind | description |
+|---|---|---|
+| **Terminal** | `SUPER + RETURN` | Launch Kitty |
+| **File Manager** | `SUPER + SHIFT + RETURN` | Launch yazi |
+| **Floating Window** | `SUPER + F` | Toggle floating mode |
+| **Browser** | `SUPER + W` | Open default browser |
+| **App Launcher** | `SUPER + D` | Open app menu |
+| **Wallpaper Picker** | `SUPER + SHIFT + A` | Run wallpaper selector |
+
+</div>
+
+---
+
+## ✦ star history
+
+<div align="center">
+  <a href="https://www.star-history.com/?repos=zzzyyyuuuuu/vroomies&type=date&legend=top-left">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=zzzyyyuuuuu/vroomies&type=date&theme=dark&legend=top-left" />
+      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=zzzyyyuuuuu/vroomies&type=date&legend=top-left" />
+      <img alt="Star History Chart" src="https://api.star-history.com/image?repos=zzzyyyuuuuu/vroomies&type=date&legend=top-left" />
+    </picture>
+  </a>
+</div>
+
+---
+
+## ✦ credits
+
+<div align="center">
+
+thanks to the [r/hyprland](https://www.reddit.com/r/hyprland/) and [r/QuickShell](https://www.reddit.com/r/QuickShell/) communities for inspiration 💙
+
+<br/>
+
+*made with 💧 by maxchennn*
+
+</div>
