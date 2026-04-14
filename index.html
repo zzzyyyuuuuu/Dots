@@ -77,26 +77,12 @@ header{
   overflow:hidden;border-bottom:var(--border);position:relative;
 }
 .hero-screen img{width:100%;height:100%;object-fit:cover}
-.screen-ph{
-  color:#334;font-family:'JetBrains Mono',monospace;
-  font-size:.75rem;text-align:center;padding:2rem;
-}
 .screen-label{
   position:absolute;bottom:1rem;left:1rem;
   font-family:'JetBrains Mono',monospace;font-size:.65rem;
   background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);
   padding:.25rem .6rem;border-radius:2px;letter-spacing:.08em;
 }
-.hero-pills{
-  display:flex;gap:0;
-}
-.pill{
-  flex:1;padding:1rem 1.25rem;border-right:var(--border);
-  font-family:'JetBrains Mono',monospace;font-size:.7rem;
-  text-transform:uppercase;letter-spacing:.08em;color:var(--dim);
-}
-.pill:last-child{border-right:none}
-.pill strong{display:block;font-size:1.6rem;color:var(--ink);font-family:'Syne',sans-serif;font-weight:800;letter-spacing:-.03em;margin-bottom:.1rem}
 
 /* TICKER */
 .ticker{overflow:hidden;padding:.65rem 0;background:var(--ink);color:var(--paper);border-bottom:var(--border)}
@@ -107,6 +93,32 @@ header{
 }
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .td{color:var(--accent)}
+
+/* GALLERY GRID */
+.gallery-section{border-bottom:var(--border)}
+.gallery-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.gallery-item{
+  border-right:var(--border);
+  border-bottom:var(--border);
+  aspect-ratio: 16/9;
+  overflow:hidden;
+  background:#0d0f1a;
+  position: relative;
+}
+.gallery-item:nth-child(even){border-right:none}
+.gallery-item img{
+  width:100%;height:100%;object-fit:cover;
+  filter:grayscale(100%);transition:filter 0.4s ease;
+}
+.gallery-item:hover img{filter:grayscale(0%)}
+.gallery-label {
+  position: absolute; bottom: 10px; left: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;
+  background: rgba(0,0,0,0.5); color: #fff; padding: 2px 5px;
+}
 
 /* FEATURES */
 .features{border-bottom:var(--border)}
@@ -139,87 +151,11 @@ header{
   background:var(--accent);color:var(--ink);
   padding:.2rem .55rem;border-radius:2px;letter-spacing:.06em;
 }
-.feat-tag.blue{background:var(--accent2)}
-
-/* DESKTOP */
-.desktop-section{border-bottom:var(--border)}
-.desktop-grid{display:grid;grid-template-columns:1fr 1fr}
-.desktop-main{
-  border-right:var(--border);
-  background:#080c14;
-  min-height:320px;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
-.desktop-main img{width:100%;height:100%;object-fit:cover}
-.desktop-side{display:flex;flex-direction:column}
-.ds-item{
-  flex:1;padding:1.5rem 2rem;border-bottom:var(--border);
-  display:flex;flex-direction:column;justify-content:center;
-}
-.ds-item:last-child{border-bottom:none}
-.ds-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem}
-.ds-val{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700}
-.ds-sub{font-size:.8rem;color:var(--dim);margin-top:.2rem}
-
-/* TOOLS */
-.tools-section{border-bottom:var(--border)}
-.tools-list{display:flex;flex-direction:column}
-.tool-row{
-  display:grid;grid-template-columns:60px 1fr 1fr auto;
-  align-items:center;gap:0;
-  padding:1rem 2.5rem;
-  border-bottom:1px solid rgba(13,13,13,.1);
-  transition:background .15s;
-}
-.tool-row:hover{background:rgba(200,255,87,.1)}
-.tool-num{
-  font-family:'JetBrains Mono',monospace;font-size:.65rem;
-  color:var(--dim);font-weight:500;
-}
-.tool-name{font-weight:500;font-size:.95rem}
-.tool-cat{
-  font-family:'JetBrains Mono',monospace;font-size:.68rem;
-  color:var(--dim);text-transform:uppercase;letter-spacing:.07em;
-}
-.tool-link a{
-  font-family:'JetBrains Mono',monospace;font-size:.7rem;
-  color:var(--dim);text-decoration:none;
-}
-.tool-link a:hover{color:var(--ink)}
 
 /* INSTALL */
 .install-section{border-bottom:var(--border)}
 .install-grid{display:grid;grid-template-columns:1fr 1fr}
-.install-left{
-  padding:2.5rem;border-right:var(--border);
-}
-.install-left h3{
-  font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;
-  letter-spacing:-.02em;margin-bottom:1rem;
-}
-.install-left p{font-size:.88rem;color:var(--dim);line-height:1.7;margin-bottom:1.5rem}
-.steps{display:flex;flex-direction:column;gap:.5rem}
-.step{
-  display:flex;align-items:flex-start;gap:.75rem;
-  padding:.75rem 1rem;
-  background:var(--surface);border-radius:4px;
-}
-.step-n{
-  font-family:'JetBrains Mono',monospace;font-size:.65rem;
-  background:var(--ink);color:var(--paper);
-  width:20px;height:20px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;font-weight:500;
-}
-.step-text{font-size:.85rem;color:var(--dim);line-height:1.5}
-.step-text strong{color:var(--ink);font-weight:500}
-
-.install-right{padding:2.5rem}
-.install-right h3{
-  font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;
-  letter-spacing:-.02em;margin-bottom:1rem;
-}
+.install-left{padding:2.5rem;border-right:var(--border)}
 .terminal{
   background:#0d0f1a;border-radius:6px;
   overflow:hidden;border:var(--border);
@@ -229,16 +165,10 @@ header{
   padding:.65rem 1rem;border-bottom:1px solid rgba(255,255,255,.06);
 }
 .term-dot{width:10px;height:10px;border-radius:50%}
-.term-title{
-  font-family:'JetBrains Mono',monospace;font-size:.65rem;
-  color:rgba(255,255,255,.25);margin-left:.5rem;
-}
-.term-body{padding:1.25rem 1.25rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.9}
-.c-dim{color:rgba(255,255,255,.25)}
+.term-body{padding:1.25rem 1.25rem;font-family:'JetBrains Mono',monospace;font-size:0.75rem;line-height:1.8}
 .c-green{color:#a6e3a1}
 .c-blue{color:#89b4fa}
 .c-yellow{color:#f9e2af}
-.c-white{color:#cdd6f4}
 .c-accent{color:#c8ff57}
 
 .copy-btn{
@@ -246,40 +176,17 @@ header{
   font-family:'JetBrains Mono',monospace;font-size:.72rem;
   background:var(--accent);color:var(--ink);
   border:none;padding:.65rem;border-radius:3px;
-  cursor:pointer;font-weight:500;letter-spacing:.05em;
-  transition:background .15s;
+  cursor:pointer;font-weight:500;
 }
-.copy-btn:hover{background:#b8ef47}
 
 /* FOOTER */
 footer{display:grid;grid-template-columns:1fr 1fr}
 .footer-left{padding:2.5rem;border-right:var(--border)}
-.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:2.8rem;letter-spacing:-.05em;margin-bottom:.5rem}
-.footer-sub{font-size:.82rem;color:var(--dim);line-height:1.7}
-.footer-sub a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
-.footer-right{padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between}
-.footer-links{display:flex;flex-direction:column;gap:.5rem}
-.footer-links a{
-  font-family:'JetBrains Mono',monospace;font-size:.8rem;
-  color:var(--dim);text-decoration:none;transition:color .15s;
-}
-.footer-links a:hover{color:var(--ink)}
-.footer-copy{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--dim)}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:2.8rem;letter-spacing:-.05em}
 
 @media(max-width:768px){
-  .hero{grid-template-columns:1fr}
-  .hero-right{display:none}
-  .features-grid{grid-template-columns:1fr 1fr}
-  .feat:nth-child(2n){border-right:none}
-  .feat:nth-child(3n){border-right:var(--border)}
-  .desktop-grid{grid-template-columns:1fr}
-  .desktop-side{display:none}
-  .install-grid{grid-template-columns:1fr}
-  .install-left{border-right:none;border-bottom:var(--border)}
-  footer{grid-template-columns:1fr}
-  .footer-left{border-right:none;border-bottom:var(--border)}
-  .tool-row{grid-template-columns:40px 1fr auto}
-  .tool-cat{display:none}
+  .hero, .gallery-grid, .features-grid, .install-grid, footer{grid-template-columns:1fr}
+  .hero-right, .gallery-item:nth-child(n){border-right:none}
 }
 </style>
 </head>
@@ -288,12 +195,11 @@ footer{display:grid;grid-template-columns:1fr 1fr}
 <header>
   <div class="h-logo">vroomies 💧</div>
   <ul class="h-nav">
+    <li><a href="#gallery">gallery</a></li>
     <li><a href="#features">features</a></li>
-    <li><a href="#desktop">desktop</a></li>
-    <li><a href="#tools">tools</a></li>
     <li><a href="#install">install</a></li>
   </ul>
-  <a href="https://github.com/zzzyyyuuuuu/vroomies" class="h-btn">github ↗</a>
+  <a href="https://github.com/maxchennn/vroomies" class="h-btn">github ↗</a>
 </header>
 
 <section class="hero">
@@ -304,13 +210,8 @@ footer{display:grid;grid-template-columns:1fr 1fr}
   </div>
   <div class="hero-right">
     <div class="hero-screen">
-      <div class="screen-ph">🖥️ hero.png<br/><span style="opacity:.4">place your screenshot here</span></div>
-      <div class="screen-label">desktop preview</div>
-    </div>
-    <div class="hero-pills">
-      <div class="pill"><strong>3</strong>main tools</div>
-      <div class="pill"><strong>6</strong>keybinds</div>
-      <div class="pill"><strong>1</strong>script</div>
+      <img src="gallery/Hero.png" alt="Hero Preview"/>
+      <div class="screen-label">main desktop</div>
     </div>
   </div>
 </section>
@@ -323,14 +224,32 @@ footer{display:grid;grid-template-columns:1fr 1fr}
     <span>hyprland<span class="td"> ✦ </span></span>
     <span>quickshell<span class="td"> ✦ </span></span>
     <span>kitty<span class="td"> ✦ </span></span>
-    <span>hyprland<span class="td"> ✦ </span></span>
-    <span>quickshell<span class="td"> ✦ </span></span>
-    <span>kitty<span class="td"> ✦ </span></span>
-    <span>hyprland<span class="td"> ✦ </span></span>
-    <span>quickshell<span class="td"> ✦ </span></span>
-    <span>kitty<span class="td"> ✦ </span></span>
   </div>
 </div>
+
+<section class="gallery-section" id="gallery">
+  <div class="sec-head">
+    <h2>visuals</h2>
+    <span>03 screenshots</span>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="gallery/Hero.png" alt="Hero View"/>
+      <div class="gallery-label">hero.png</div>
+    </div>
+    <div class="gallery-item">
+      <img src="gallery/launcher.png" alt="Launcher View"/>
+      <div class="gallery-label">launcher.png</div>
+    </div>
+    <div class="gallery-item">
+      <img src="gallery/wallpaper-switcher.png" alt="Wallpaper Switcher"/>
+      <div class="gallery-label">wallpaper-switcher.png</div>
+    </div>
+    <div class="gallery-item" style="display: flex; align-items: center; justify-content: center; background: var(--surface);">
+       <span style="font-family:'JetBrains Mono'; font-size: 0.7rem; color: var(--dim);">more coming soon...</span>
+    </div>
+  </div>
+</section>
 
 <section class="features" id="features">
   <div class="sec-head">
@@ -345,95 +264,16 @@ footer{display:grid;grid-template-columns:1fr 1fr}
       <span class="feat-tag">performance</span>
     </div>
     <div class="feat">
-      <div class="feat-icon">🎨</div>
-      <div class="feat-title">Custom animations</div>
-      <div class="feat-desc">Smooth window transitions and floating effects tuned to feel snappy.</div>
-      <span class="feat-tag">visual</span>
-    </div>
-    <div class="feat">
       <div class="feat-icon">🖼️</div>
       <div class="feat-title">Wallpaper switcher</div>
-      <div class="feat-desc">Built-in picker via Quickshell. Switch on the fly with a single keybind.</div>
-      <span class="feat-tag blue">quickshell</span>
-    </div>
-    <div class="feat">
-      <div class="feat-icon">🚀</div>
-      <div class="feat-title">App launcher</div>
-      <div class="feat-desc">Custom Quickshell launcher. Fast fuzzy search, keyboard-only workflow.</div>
-      <span class="feat-tag blue">quickshell</span>
-    </div>
-    <div class="feat">
-      <div class="feat-icon">📊</div>
-      <div class="feat-title">Custom bar</div>
-      <div class="feat-desc">Quickshell bar with workspace indicators and system stats. Clean UI.</div>
-      <span class="feat-tag">visual</span>
+      <div class="feat-desc">Built-in picker via Quickshell. Switch on the fly.</div>
+      <span class="feat-tag">quickshell</span>
     </div>
     <div class="feat">
       <div class="feat-icon">🔧</div>
       <div class="feat-title">One-script install</div>
-      <div class="feat-desc">The install script sets up everything — packages, configs, symlinks.</div>
+      <div class="feat-desc">The install script sets up everything automatically.</div>
       <span class="feat-tag">dev</span>
-    </div>
-  </div>
-</section>
-
-<section class="desktop-section" id="desktop">
-  <div class="sec-head">
-    <h2>desktop</h2>
-    <span>screenshot</span>
-  </div>
-  <div class="desktop-grid">
-    <div class="desktop-main">
-      <div class="screen-ph">🖥️ wallpaper-switcher.png<br/><span style="opacity:.3">place your screenshot here</span></div>
-    </div>
-    <div class="desktop-side">
-      <div class="ds-item">
-        <div class="ds-label">compositor</div>
-        <div class="ds-val">Hyprland</div>
-        <div class="ds-sub">Wayland, GPU-accelerated</div>
-      </div>
-      <div class="ds-item">
-        <div class="ds-label">bar</div>
-        <div class="ds-val">Quickshell</div>
-        <div class="ds-sub">Custom widgets + launcher</div>
-      </div>
-      <div class="ds-item">
-        <div class="ds-label">terminal</div>
-        <div class="ds-val">Kitty</div>
-        <div class="ds-sub">GPU-rendered, fast</div>
-      </div>
-      <div class="ds-item" style="border-bottom:none">
-        <div class="ds-label">colorscheme</div>
-        <div class="ds-val">Matugen</div>
-        <div class="ds-sub">Consistent across all apps</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="tools-section" id="tools">
-  <div class="sec-head">
-    <h2>tools</h2>
-    <span>primary stack</span>
-  </div>
-  <div class="tools-list">
-    <div class="tool-row">
-      <div class="tool-num">01</div>
-      <div class="tool-name">Hyprland</div>
-      <div class="tool-cat">compositor</div>
-      <div class="tool-link"><a href="https://github.com/hyprwm/Hyprland">github ↗</a></div>
-    </div>
-    <div class="tool-row">
-      <div class="tool-num">02</div>
-      <div class="tool-name">Quickshell</div>
-      <div class="tool-cat">bar · launcher</div>
-      <div class="tool-link"><a href="https://quickshell.org/">quickshell.org ↗</a></div>
-    </div>
-    <div class="tool-row" style="border-bottom:none">
-      <div class="tool-num">03</div>
-      <div class="tool-name">Kitty</div>
-      <div class="tool-cat">terminal</div>
-      <div class="tool-link"><a href="https://github.com/kovidgoyal/kitty">github ↗</a></div>
     </div>
   </div>
 </section>
@@ -445,51 +285,20 @@ footer{display:grid;grid-template-columns:1fr 1fr}
   </div>
   <div class="install-grid">
     <div class="install-left">
-      <h3>before you start</h3>
-      <p>Ensure you are on an Arch-based distro with Hyprland support. The script handles dependencies.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-n">1</div>
-          <div class="step-text"><strong>Clone the repo</strong> to your home directory</div>
-        </div>
-        <div class="step">
-          <div class="step-n">2</div>
-          <div class="step-text"><strong>Run the install script</strong> — links configs</div>
-        </div>
-        <div class="step">
-          <div class="step-n">3</div>
-          <div class="step-text"><strong>Log out</strong> and select Hyprland</div>
-        </div>
-        <div class="step">
-          <div class="step-n">4</div>
-          <div class="step-text"><strong>Done.</strong> Hit <code style="font-family:'JetBrains Mono',monospace;font-size:.8rem;background:var(--surface);padding:.1rem .3rem;border-radius:2px">SUPER + D</code></div>
-        </div>
-      </div>
-    </div>
-    <div class="install-right">
-      <h3>quick install</h3>
+      <p>Ensure you are on an Arch-based distro with Hyprland support.</p>
       <div class="terminal">
         <div class="term-bar">
           <div class="term-dot" style="background:#f38ba8"></div>
           <div class="term-dot" style="background:#f9e2af"></div>
           <div class="term-dot" style="background:#a6e3a1"></div>
-          <div class="term-title">bash — vroomies install</div>
         </div>
         <div class="term-body">
-          <div><span class="c-dim"># clone the repo</span></div>
-          <div><span class="c-green">git</span> <span class="c-white">clone</span> <span class="c-blue">https://github.com/zzzyyyuuuuu/vroomies</span> <span class="c-yellow">~/.config/vroomies</span></div>
-          <div>&nbsp;</div>
-          <div><span class="c-dim"># navigate and run</span></div>
-          <div><span class="c-green">cd</span> <span class="c-yellow">~/.config/vroomies</span></div>
-          <div><span class="c-green">chmod</span> <span class="c-white">+x</span> <span class="c-yellow">install.sh</span></div>
+          <div><span class="c-green">git</span> <span class="c-blue">clone</span> <span class="c-yellow">https://github.com/maxchennn/vroomies</span></div>
+          <div><span class="c-green">cd</span> <span class="c-yellow">vroomies</span></div>
           <div><span class="c-accent">./install.sh</span></div>
         </div>
       </div>
-      <button class="copy-btn" onclick="
-        navigator.clipboard.writeText('git clone https://github.com/zzzyyyuuuuu/vroomies ~/.config/vroomies && cd ~/.config/vroomies && chmod +x install.sh && ./install.sh');
-        this.textContent='copied!';
-        setTimeout(()=>this.textContent='copy install command',1500);
-      ">copy install command</button>
+      <button class="copy-btn" onclick="navigator.clipboard.writeText('git clone https://github.com/maxchennn/vroomies && cd vroomies && ./install.sh')">copy install command</button>
     </div>
   </div>
 </section>
@@ -497,19 +306,7 @@ footer{display:grid;grid-template-columns:1fr 1fr}
 <footer>
   <div class="footer-left">
     <div class="footer-logo">vroomies.</div>
-    <p class="footer-sub">
-      made with 💧 by <a href="https://github.com/maxchennn">maxchennn</a>
-    </p>
-  </div>
-  <div class="footer-right">
-    <div class="footer-links">
-      <a href="https://github.com/maxchennn/vroomies">github ↗</a>
-      <a href="#features">features</a>
-      <a href="#desktop">desktop</a>
-      <a href="#tools">tools</a>
-      <a href="#install">install</a>
-    </div>
-    <div class="footer-copy">💧 vroomies — hyprland dotfiles</div>
+    <p>made with 💧 by <a href="https://github.com/maxchennn" style="color:inherit">maxchennn</a></p>
   </div>
 </footer>
 
