@@ -13,7 +13,8 @@ fi
 
 ln -sf "$SELECTED_PATH" "$SYMLINK_PATH"
 
-swww img "$SELECTED_PATH" \
+# if you use fedora / opensuse leap : delete awww , write swww
+awww img "$SELECTED_PATH" \
     --transition-type grow \
     --transition-pos 0.5,0.5 \
     --transition-duration 1.2 \
