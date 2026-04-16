@@ -22,11 +22,7 @@ body.light-mode {
     --code-bg: #f0f0f2;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -36,11 +32,7 @@ body {
     overflow-x: hidden;
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
+.container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
 
 .navbar {
     display: flex;
@@ -49,25 +41,10 @@ body {
     padding: 40px 0;
 }
 
-.nav-brand {
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+.nav-brand { font-weight: 800; display: flex; align-items: center; gap: 8px; }
+.brand-dot { width: 10px; height: 10px; background: var(--accent); border-radius: 2px; }
 
-.brand-dot {
-    width: 10px;
-    height: 10px;
-    background: var(--accent);
-    border-radius: 2px;
-}
-
-.nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+.nav-controls { display: flex; align-items: center; gap: 12px; }
 
 .theme-btn {
     background: var(--btn-bg);
@@ -82,18 +59,56 @@ body {
 .mode-icon::before { content: '🌙'; }
 body.light-mode .mode-icon::before { content: '☀️'; }
 
-.hero-showcase {
-    text-align: center;
-    margin-bottom: 60px;
-}
+.hero-showcase { text-align: center; margin-bottom: 60px; position: relative; }
 
-.main-preview {
+.slider-container {
+    position: relative;
     width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 30px 60px var(--shadow);
-    border: 1px solid var(--border);
     margin-bottom: 30px;
 }
+
+.slider-wrapper {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px var(--shadow);
+    border: 1px solid var(--border);
+    position: relative;
+    aspect-ratio: 16 / 9;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.slide.active { opacity: 1; }
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.slider-arrow:hover { background: var(--accent); color: black; }
+.prev { left: 20px; }
+.next { right: 20px; }
 
 .gradient-text {
     background: linear-gradient(90deg, var(--text), var(--accent));
@@ -101,15 +116,7 @@ body.light-mode .mode-icon::before { content: '☀️'; }
     -webkit-text-fill-color: transparent;
 }
 
-.install-section {
-    margin-bottom: 80px;
-}
-
-.install-section h2 {
-    margin-bottom: 20px;
-    font-size: 1.4rem;
-}
-
+.install-section { margin-bottom: 80px; }
 .code-block {
     background: var(--code-bg);
     padding: 18px 24px;
@@ -119,8 +126,6 @@ body.light-mode .mode-icon::before { content: '☀️'; }
     justify-content: space-between;
     align-items: center;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    overflow-x: auto;
 }
 
 .copy-btn {
@@ -131,30 +136,7 @@ body.light-mode .mode-icon::before { content: '☀️'; }
     border-radius: 6px;
     font-weight: 700;
     cursor: pointer;
-    margin-left: 15px;
 }
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 80px;
-}
-
-.gallery-item {
-    background: var(--surface);
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
-
-.item-info { padding: 20px; }
 
 .btn-github {
     text-decoration: none;
@@ -165,10 +147,7 @@ body.light-mode .mode-icon::before { content: '☀️'; }
     font-weight: 600;
 }
 
-.slide-down {
-    animation: slideDown 0.8s ease forwards;
-}
-
+.slide-down { animation: slideDown 0.8s ease forwards; }
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -180,13 +159,6 @@ body.light-mode .mode-icon::before { content: '☀️'; }
     transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
+.reveal.active { opacity: 1; transform: translateY(0); }
 
-footer {
-    text-align: center;
-    padding: 60px 0;
-    color: var(--text-dim);
-}
+footer { text-align: center; padding: 60px 0; color: var(--text-dim); }
