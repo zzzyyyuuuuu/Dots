@@ -7,19 +7,24 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="fade-in">
 
     <nav class="navbar container">
-        <div class="nav-brand">
+        <div class="nav-brand slide-down">
             <div class="brand-dot"></div>
             VROOMIES
         </div>
-        <a href="https://github.com/maxchennn" class="btn-github" target="_blank">maxchennn</a>
+        <div class="nav-controls slide-down">
+            <button id="theme-toggle" class="theme-btn">
+                <span class="mode-icon"></span>
+            </button>
+            <a href="https://github.com/maxchennn" class="btn-github" target="_blank">maxchennn</a>
+        </div>
     </nav>
 
     <main class="container">
-        <section class="hero-showcase">
-            <img src="gallery/Hero.png" alt="Vroomies Hero" class="main-preview">
+        <section class="hero-showcase reveal">
+            <img src="gallery/Hero.png" alt="Hero" class="main-preview">
             <div class="hero-text">
                 <h1>The <span class="gradient-text">Vroomies</span> Experience</h1>
                 <p>A minimalist desktop environment focused on speed and aesthetics.</p>
@@ -27,7 +32,7 @@
         </section>
 
         <section class="gallery-grid">
-            <div class="gallery-item">
+            <div class="gallery-item reveal" style="transition-delay: 0.1s;">
                 <img src="gallery/launcher.png" alt="Launcher">
                 <div class="item-info">
                     <h3>Dynamic Launcher</h3>
@@ -35,8 +40,8 @@
                 </div>
             </div>
 
-            <div class="gallery-item">
-                <img src="gallery/wallpaper-switcher.png" alt="Wallpaper Switcher">
+            <div class="gallery-item reveal" style="transition-delay: 0.2s;">
+                <img src="gallery/wallpaper-switcher.png" alt="Switcher">
                 <div class="item-info">
                     <h3>Palette Flow</h3>
                     <p>Colors that match your style.</p>
@@ -45,9 +50,30 @@
         </section>
     </main>
 
-    <footer class="container">
+    <footer class="container reveal">
         <p>&copy; 2026 Developed by maxchennn</p>
     </footer>
 
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'light-mode') {
+            body.classList.add('light-mode');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light-mode' : '');
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
