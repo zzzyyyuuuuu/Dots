@@ -75,11 +75,15 @@
 
             <div class="code-block">
                 <code id="install-cmd">curl -sSL https://raw.githubusercontent.com/maxchennn/vroomies/main/install/install.sh | bash</code>
-                <button class="copy-btn" onclick="copyCode()">Copy</button>
+                <button class="copy-btn" onclick="copyCode('install-cmd')">Copy</button>
             </div>
+
             <div id="os-note" class="install-note">
-                yay installation is required: <br>
-                <code>sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si</code>
+                <p class="note-title">yay installation is required:</p>
+                <div class="mini-code-block">
+                    <code id="yay-cmd">sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si</code>
+                    <button class="mini-copy" onclick="copyCode('yay-cmd')">Copy</button>
+                </div>
             </div>
         </section>
     </main>
@@ -115,19 +119,24 @@
             const note = document.getElementById('os-note');
             if (os === 'arch') {
                 cmd.innerText = "curl -sSL https://raw.githubusercontent.com/maxchennn/vroomies/main/install/install.sh | bash";
-                note.innerHTML = "yay installation is required: <br><code>sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si</code>";
+                note.innerHTML = `<p class="note-title">yay installation is required:</p>
+                                 <div class="mini-code-block">
+                                    <code id="yay-cmd">sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si</code>
+                                    <button class="mini-copy" onclick="copyCode('yay-cmd')">Copy</button>
+                                 </div>`;
             } else {
                 cmd.innerText = "curl -sSL https://raw.githubusercontent.com/maxchennn/vroomies/main/install/ignite.sh | bash";
-                note.innerHTML = "copr installation is required.";
+                note.innerHTML = `<p class="note-title">copr installation is required.</p>`;
             }
         }
 
-        function copyCode() {
-            const code = document.getElementById('install-cmd').innerText;
+        function copyCode(id) {
+            const code = document.getElementById(id).innerText;
             navigator.clipboard.writeText(code);
-            const btn = document.querySelector('.copy-btn');
+            const btn = event.target;
+            const originalText = btn.innerText;
             btn.innerText = "Done!";
-            setTimeout(() => btn.innerText = "Copy", 2000);
+            setTimeout(() => btn.innerText = originalText, 2000);
         }
 
         const observer = new IntersectionObserver((entries) => {
