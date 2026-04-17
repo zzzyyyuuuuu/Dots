@@ -1,55 +1,80 @@
-import QtQuick
-import QtQuick.Layouts
 import Quickshell
 import Quickshell.Wayland
+import QtQuick
+import Qt5Compat.GraphicalEffects 
 
 ShellRoot {
-    Variants {
-        model: Quickshell.screens
+    property color accentColor: zyuTheme.accent
+    property string activeFont: "Google Sans Flex"
 
-        PanelWindow {
-            id: w
-            property var modelData
-            screen: modelData
+    PanelWindow {
+        anchors.top: true
+        anchors.bottom: true
+        anchors.left: true
+        anchors.right: true
+        
+        WlrLayershell.layer: WlrLayer.Background
+        WlrLayershell.namespace: "activate-linux-widget"
+        WlrLayershell.exclusiveZone: -1 
+        color: "transparent"
 
-            anchors {
-                right: true
-                bottom: true
-            }
-
-            margins {
-                right: 50
-                bottom: 80 
-            }
-
-            implicitWidth: content.width
-            implicitHeight: content.height
-
-            color: "transparent"
+        Rectangle {
+            id: backgroundGuard
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
             
-            WlrLayershell.layer: WlrLayer.Background
+            anchors.rightMargin: 20 
+            anchors.bottomMargin: 20
+            
+            width: contentLayout.width + 40
+            height: contentLayout.height + 25
+            
+            radius: 12
+            color: "#88000000" 
+            border.color: "#22ffffff" 
+            border.width: 1
 
-            ColumnLayout {
-                id: content
-                spacing: 0 
+            FastBlur {
+                anchors.fill: parent
+                source: parent
+                radius: 50
+                transparentBorder: true
+            }
+
+            Column {
+                id: contentLayout
+                anchors.centerIn: parent
+                spacing: 2
 
                 Text {
                     text: "Activate Linux"
-                    color: "#88ffffff"
-                    font.pixelSize: 40 
-                    font.family: "VT323"
+                    color: accentColor
+                    opacity: 1.0
+                    font.family: activeFont
+                    font.pixelSize: 25
+                    font.weight: Font.Light
+                    font.letterSpacing: 1
                     renderType: Text.QtRendering
-                    antialiasing: false 
-                    font.weight: Font.Bold
                 }
 
                 Text {
                     text: "Go to Settings to activate Linux."
-                    color: "#88ffffff"
-                    font.pixelSize: 16
-                    font.family: "Monospace"
+                    color: "white"
+                    opacity: 1.0
+                    font.family: "SF Pro Display"
+                    font.pixelSize: 25
+                    font.weight: Font.Normal
+                    font.letterSpacing: 0.5
                     renderType: Text.QtRendering
-                    antialiasing: false
+                }
+
+                Rectangle {
+                    width: 20
+                    height: 1
+                    radius: 1
+                    color: accentColor
+                    opacity: 0.4
+                    anchors.left: parent.left
                 }
             }
         }
