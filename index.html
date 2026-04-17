@@ -111,10 +111,10 @@
             const cmd = document.getElementById('install-cmd');
             const note = document.getElementById('os-note');
             if (os === 'arch') {
-                cmd.innerText = "curl -sSL https://raw.githubusercontent.com/maxchennn/vroomies/main/install.sh | bash";
+                cmd.innerText = "curl -sSL https://raw.githubusercontent.com/maxchennn/vroomies/main/install/install.sh | bash";
                 note.innerText = "Preparing setup for Arch Linux...";
             } else {
-                cmd.innerText = "curl -sSL https://raw.githubusercontent.com/maxchennn/vroomies/main/ignite.sh | bash";
+                cmd.innerText = "curl -sSL https://raw.githubusercontent.com/maxchennn/vroomies/main/install/ignite.sh | bash";
                 note.innerText = "Preparing setup for Fedora...";
             }
         }
