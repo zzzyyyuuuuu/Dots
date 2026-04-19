@@ -16,6 +16,7 @@ packages=(
     'htop'
     'fish'
     'util-linux-user'
+    'dolphin'
     # --- System Tools ---
     'pavucontrol'
     'gufw'
