@@ -62,7 +62,7 @@
 | action | keybind | description |
 |---|---|---|
 | **Terminal** | `SUPER + RETURN` | Launch Kitty |
-| **File Manager** | `SUPER + SHIFT + RETURN` | Launch yazi |
+| **File Manager** | `SUPER + SHIFT + RETURN` | Launch dolphin |
 | **Floating Window** | `SUPER + F` | Toggle floating mode |
 | **Browser** | `SUPER + W` | Open default browser |
 | **App Launcher** | `SUPER + D` | Open app menu |
