@@ -15,6 +15,7 @@ packages=(
     'fastfetch'
     'htop'
     'fish'
+    'dolphin'
     # --- System Tools ---
     'pavucontrol'
     'gufw'
