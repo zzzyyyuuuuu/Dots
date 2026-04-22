@@ -47,7 +47,7 @@
 | 🐚 **Shell** | [Zsh](https://github.com/zsh-users/zsh) |
 | 📊 **Bar + Launcher** | [Quickshell](https://quickshell.org/) |
 | ✏️ **Editor** | [Neovim](https://github.com/neovim/neovim) |
-| 📁 **Files** | [yazi](https://github.com/sxyazi/yazi) and [Dolphin|(https://apps.kde.org/dolphin)
+| 📁 **Files** | [yazi](https://github.com/sxyazi/yazi) and [Dolphin](https://apps.kde.org/dolphin)
 
 </div>
 
