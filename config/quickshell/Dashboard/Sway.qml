@@ -756,7 +756,7 @@ PanelWindow {
                             cursorShape: Qt.PointingHandCursor
                             onClicked: wlogoutProc.running = true
                         }
-                        Process { id: wlogoutProc; command: ["bash", "-c", "wlogout"] }
+                        Process { id: wlogoutProc; command: ["bash", "-c", "wlogout -b 5"] }
                     }
                 }
 
